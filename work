@@ -1,0 +1,53 @@
+ 
+   <i class="uil uil-list-ul"></i>
+    <i class="uil uil-multiply"></i>
+    <i class="uil uil-plus"></i>
+    <i class="uil uil-minus"></i>
+    
+    <i class="uil uil-laptop-cloud"></i>
+    <i class="uil uil-music"></i>
+    <i class="uil uil-adobe-alt"></i>
+
+
+    <?php 
+
+
+mysql_connect("localhost","root","") or die (mysql_error());
+
+mysql_select_db("portal");
+if(isset($_GET['delete']))
+	{
+		$sql = "DELETE FROM index.php WHERE id=".$_GET['delete'].";";
+		mysql_query($sql) or die(mysql_error());
+	}
+?>
+<?php
+$query = "";
+$message = "";
+
+	if(isset($_POST['Submit']))
+	 {
+	if(!($_POST['name']))
+		$message = "field is required";
+		if(!($_POST['email']))
+		$message = "field is required";
+        if(!($_POST['password']))
+		$message = "field is required";
+	
+	else {
+		$query=" INSERT INTO portal (name, email, password ) VALUES('"
+		    .$_POST['name']."','"
+		    .$_POST['email']."','"
+            .$_POST['password']."'
+		);";
+		mysql_query($query) or die("Error in Registration<hr>".mysql_error());
+		$message="Checkout Successfully";
+		header("Refresh: 0; URL=register.php");	
+		}}
+		?>
+
+if(database.name){
+                alert('regsiter sucessful');
+            } else{
+                alert(data);
+            }
